@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,700&display=swap');
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+$blue: #347eff;
+
+body {
+    background: #edf7fa;
+    overflow-x: hidden;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: #347eff;
+    width: 160px;
+    height: 50px;
+    border-radius: 99999px;
+    color: #fff;
+    font-size: 18px;
+
+    &:hover {
+        transition: .3s linear;
+        background: darken(#347eff, 15%);
+    }
+}
+
+@import "page";
+@import "note";
+@import "input";
+@import "header";
+@import "modal";
+
