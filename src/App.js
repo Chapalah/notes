@@ -7,10 +7,13 @@ import './Sass/main.scss'
 const App = () => {
   const [notes, setNotes] = useState([])
   const [searchTag, setSearchTag] = useState('')
-  
+  console.log(123);
+  !localStorage.getItem('notes') && localStorage.setItem('notes', [])
+
   useEffect(() => {
-    !localStorage.getItem('notes') && localStorage.setItem('notes', [])
-    setNotes(JSON.parse(localStorage.getItem('notes')))
+    try {
+      setNotes(JSON.parse(localStorage.getItem('notes')))
+    } catch{}
   }, []) 
 
   function getSearchedNotes() {

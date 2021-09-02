@@ -27,12 +27,12 @@
 
         &:focus {
             outline: none;
-            border: 2.5px solid #347eff;
+            border: 2.5px solid $blue;
         }
     }
 
     &__button {
-        background: #347eff;
+        background: $blue;
         width: 200px;
         height: 50px;
         border-radius: 99999px;
@@ -41,7 +41,7 @@
 
         &:hover {
             transition: .3s linear;
-            background: darken(#347eff, 10%);
+            background: darken($blue, 10%);
         }
     }
 }
