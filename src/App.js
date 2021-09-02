@@ -7,17 +7,22 @@ import './Sass/main.scss'
 const App = () => {
   const [notes, setNotes] = useState([])
   const [searchTag, setSearchTag] = useState('')
+  
+  useEffect(() => {
+    !localStorage.getItem('notes') && localStorage.setItem('notes', [])
+    setNotes(JSON.parse(localStorage.getItem('notes')))
+  }, []) 
 
   function getSearchedNotes() {
     if (searchTag) {
       const searchNotes = []
 
       notes.forEach(note => {
-          note.tags.forEach(tag => {
-            if (tag === searchTag) {
-              searchNotes.push(note)
-            }
-          })
+        note.tags.forEach(tag => {
+          if (tag === searchTag) {
+            searchNotes.push(note)
+          }
+        })
       })
       return searchNotes
     } else {
@@ -28,15 +33,11 @@ const App = () => {
   const searchedNotes = getSearchedNotes()
 
   useEffect(() => {
-    !localStorage.getItem('notes') && localStorage.setItem('notes', [])
-    setNotes(JSON.parse(localStorage.getItem('notes')))
-  }, []) 
-
-  useEffect(() => {
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
 
   const compliteNote = (index, isComplited) => {
+    index &&
     setNotes(prev => {
       prev[index].complited = !isComplited
       return [...prev]
